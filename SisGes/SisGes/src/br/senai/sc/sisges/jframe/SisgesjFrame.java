@@ -9,7 +9,7 @@ import br.senai.sc.sisges.views.CadastroAgenda;
 import br.senai.sc.sisges.views.CadastroColaborador;
 import br.senai.sc.sisges.views.CadastroDeEquipe;
 import br.senai.sc.sisges.views.ListagemColaborador;
-import br.senai.sc.sisges.views.ListagemEquipe;
+//import br.senai.sc.sisges.views.ListagemEquipe;
 import br.senai.sc.sisges.views.TelaLogin;
 import java.awt.CardLayout;
 import java.sql.SQLException;
@@ -31,13 +31,13 @@ public class SisgesjFrame extends javax.swing.JFrame {
         CadastroColaborador cadCol = new CadastroColaborador();
         TelaLogin tp = new TelaLogin();
         CadastroDeEquipe cadEqu = new CadastroDeEquipe();
-        ListagemEquipe lEqu = new ListagemEquipe();
+        //ListagemEquipe lEqu = new ListagemEquipe();
         CadastroAgenda cAge = new CadastroAgenda();
 
         painelPrincipal.add(cadCol, "cadastroColaborador");
         painelPrincipal.add(tp, "telaPadrao");
         painelPrincipal.add(cadEqu, "cadastroEquipe");
-        painelPrincipal.add(lEqu, "listarEquipe");
+        //painelPrincipal.add(lEqu, "listarEquipe");
         painelPrincipal.add(cAge, "cadastroAgenda");
 
         //Chamar a tela padrão aqui

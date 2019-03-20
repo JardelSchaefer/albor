@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ListagemColaborador extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int idCol;
+    private int linha;
 
     public ListagemColaborador() {
         initComponents();
@@ -58,7 +60,12 @@ public class ListagemColaborador extends javax.swing.JPanel {
     }
 
     private void limparTabela() {
-        ((DefaultTableModel) tblColaborador.getModel()).setNumRows(0);
+
+        JTable table1 = new JTable(new DefaultTableModel());
+
+        //while (table1.getRowCount() > 0) table1.removeRow(0);
+        
+        //((DefaultTableModel) tblColaborador.getModel()).setNumRows(0);
         tblColaborador.updateUI();
     }
 
@@ -70,9 +77,11 @@ public class ListagemColaborador extends javax.swing.JPanel {
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("sis_ges?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         colaboradorQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Colaborador c");
         colaboradorList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : colaboradorQuery.getResultList();
+        menPopUpTbl = new javax.swing.JPopupMenu();
+        menPopEditar = new javax.swing.JMenuItem();
+        menPopEliminar = new javax.swing.JMenuItem();
         painelEdicao = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
-        btnApagar = new javax.swing.JButton();
         labelCadastroCliente = new javax.swing.JLabel();
         lbNomCol = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -108,6 +117,22 @@ public class ListagemColaborador extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblColaborador = new javax.swing.JTable();
 
+        menPopEditar.setText("Editar");
+        menPopEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menPopEditarActionPerformed(evt);
+            }
+        });
+        menPopUpTbl.add(menPopEditar);
+
+        menPopEliminar.setText("Eliminar");
+        menPopEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menPopEliminarActionPerformed(evt);
+            }
+        });
+        menPopUpTbl.add(menPopEliminar);
+
         setLayout(new java.awt.CardLayout());
 
         painelEdicao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -116,13 +141,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
-            }
-        });
-
-        btnApagar.setText("Apagar cadastro");
-        btnApagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApagarActionPerformed(evt);
             }
         });
 
@@ -265,9 +283,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
                     .addGroup(painelEdicaoLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnApagar)
-                        .addGap(60, 60, 60))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(painelEdicaoLayout.createSequentialGroup()
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
@@ -370,9 +386,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnApagar)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -426,6 +440,11 @@ public class ListagemColaborador extends javax.swing.JPanel {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        tblColaborador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblColaboradorMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblColaborador);
 
         javax.swing.GroupLayout painelListagemLayout = new javax.swing.GroupLayout(painelListagem);
@@ -445,6 +464,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
         Colaborador col = new Colaborador();
 
         col.setNomCol(cpNomCol.getText());
@@ -486,6 +506,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Falha ao atualizar cadastro !");
             Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void preencherFormulario(int idCol) {
@@ -503,7 +524,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
             cpCpfCol.setText("" + col.getCpfCol());
             cpDddCol.setText("" + col.getDddCol());
             cpEquCol.setText("" + col.getEquCol());
-           
 
         } catch (SQLException ex) {
             Logger.getLogger(ListagemColaborador.class.getName()).log(Level.SEVERE, null, ex);
@@ -513,28 +533,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
 
     }
 
-    private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-
-        Object[] options = {"Sim", "Não"};
-        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar este funcionário?",
-                "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-
-        if (opcaoSelecionada == 0) {
-
-            ColaboradorDao cliDao = new ColaboradorDao();
-            try {
-                cliDao.eliminar(this.idCol);
-                this.limparTabela();
-                JOptionPane.showMessageDialog(null, "Cadastro apagado com sucesso!");
-
-            } catch (SQLException ex) {
-                Logger.getLogger(ListagemColaborador.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Erro ao apagar cadastro!", "ATENÇÃO!", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }//GEN-LAST:event_btnApagarActionPerformed
-
     private void cpNomColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpNomColActionPerformed
 
     }//GEN-LAST:event_cpNomColActionPerformed
@@ -543,9 +541,79 @@ public class ListagemColaborador extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboLoginActionPerformed
 
+    private void menPopEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menPopEliminarActionPerformed
+
+        Object[] options = {"Sim", "Não"};
+        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar este funcionário?",
+                "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
+        if (opcaoSelecionada == 0) {
+
+            //ColaboradorDao colDao = new ColaboradorDao();
+            //try {
+            //colDao.eliminar(this.idCol);
+            this.limparTabela();
+            JOptionPane.showMessageDialog(null, "Cadastro apagado com sucesso!");
+
+            //} catch (SQLException ex) {
+            ///  Logger.getLogger(ListagemColaborador.class.getName()).log(Level.SEVERE, null, ex);
+            /// JOptionPane.showMessageDialog(null, "Erro ao apagar cadastro!", "ATENÇÃO!", JOptionPane.ERROR_MESSAGE);
+            //}
+        }
+
+    }//GEN-LAST:event_menPopEliminarActionPerformed
+
+    private void menPopEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menPopEditarActionPerformed
+
+        this.cl = (CardLayout) this.getLayout();
+        this.cl.show(this, "painelEdicao");
+
+    }//GEN-LAST:event_menPopEditarActionPerformed
+
+    private void tblColaboradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblColaboradorMouseClicked
+        if ((evt.getModifiers() & evt.BUTTON3_MASK) != 0) {
+            this.linha = tblColaborador.getSelectedRow();
+            menPopUpTbl.show(tblColaborador, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_tblColaboradorMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ListagemColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ListagemColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ListagemColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ListagemColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ListagemColaborador().setVisible(true);
+            }
+        });
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApagar;
     private javax.swing.JButton btnSalvar;
     private java.util.List<br.senai.sc.sisges.views.Colaborador> colaboradorList;
     private javax.persistence.Query colaboradorQuery;
@@ -582,6 +650,9 @@ public class ListagemColaborador extends javax.swing.JPanel {
     private javax.swing.JLabel lbEquCol;
     private javax.swing.JLabel lbNomCol;
     private javax.swing.JLabel lbNumCol;
+    private javax.swing.JMenuItem menPopEditar;
+    private javax.swing.JMenuItem menPopEliminar;
+    private javax.swing.JPopupMenu menPopUpTbl;
     private javax.swing.JPanel painelEdicao;
     private javax.swing.JPanel painelListagem;
     private javax.swing.JTable tblColaborador;

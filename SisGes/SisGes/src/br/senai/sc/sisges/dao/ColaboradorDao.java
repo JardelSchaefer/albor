@@ -49,7 +49,7 @@ public class ColaboradorDao extends ConnectionFactory {
 
     public void eliminar(int idCol) throws SQLException {
 
-        String sql = "delete from colaborador where codigoC = ?";
+        String sql = "delete from colaborador where idCol = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             st.setInt(1, idCol);
@@ -63,9 +63,9 @@ public class ColaboradorDao extends ConnectionFactory {
 
     public void alterar(Colaborador col) throws SQLException {
 
-        String sql = "update cliente set nomCol = ?, endCol = ?, numCol= ?, baiCol = ?,cepCol= ?, "
-                + "comCol = ?, cpfCol=?, celCol = ?, tipoCol=?, usuCol=?, "
-                + "senCol=?, equCol=?, dddCol=? where idCol = ?";
+        String sql = "update colaborador set nomCol = ?, endCol = ?, numCol= ?, baiCol = ?,cepCol= ?, "
+                + "comCol = ?, cpfCol=?, celCol = ?, tipoCol=?, "
+                + "equCol=?, dddCol=? where idCol = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             st.setString(1, col.getNomCol());
@@ -77,11 +77,11 @@ public class ColaboradorDao extends ConnectionFactory {
             st.setLong(7, col.getCpfCol());
             st.setLong(8, col.getCelCol());
             st.setString(9, col.getTipoCol());
-            st.setString(10, col.getUsuCol());
-            st.setString(11, col.getSenCol());
-            st.setString(12, col.getEquCol());
-            st.setLong(13, col.getDddCol());
-            st.setLong(14, col.getIdCol());
+            //st.setString(10, col.getUsuCol());
+            //st.setString(11, col.getSenCol());
+            st.setString(10, col.getEquCol());
+            st.setLong(11, col.getDddCol());
+            st.setLong(12, col.getIdCol());
 
             st.execute();
             st.close();
