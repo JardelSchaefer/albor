@@ -17,6 +17,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
     private CardLayout cl;
     private int idCol;
     private int linha;
+    
 
     public ListagemColaborador() {
         initComponents();
@@ -26,6 +27,8 @@ public class ListagemColaborador extends javax.swing.JPanel {
 
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
+        
+        this.popularTabela();
     }
 
     private void popularTabela() {
@@ -45,6 +48,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
                     c.getCepCol(), c.getComCol(), c.getCpfCol(),
                     c.getCelCol(), c.getTipoCol(), c.getUsuCol(),
                     c.getSenCol(), c.getUltAcCol(), c.getEquCol()});
+               
             }
 
             for (int idx = 0; idx < lista.size(); idx++) {
@@ -60,23 +64,17 @@ public class ListagemColaborador extends javax.swing.JPanel {
     }
 
     private void limparTabela() {
-
-        JTable table1 = new JTable(new DefaultTableModel());
-
-        //while (table1.getRowCount() > 0) table1.removeRow(0);
+        //JTable table1 = new JTable(new DefaultTableModel());
+       // while (table1.getRowCount() > 0) table1.remove(0);
         
-        //((DefaultTableModel) tblColaborador.getModel()).setNumRows(0);
+        ((DefaultTableModel) tblColaborador.getModel()).setNumRows(0);
         tblColaborador.updateUI();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("sis_ges?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        colaboradorQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Colaborador c");
-        colaboradorList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : colaboradorQuery.getResultList();
         menPopUpTbl = new javax.swing.JPopupMenu();
         menPopEditar = new javax.swing.JMenuItem();
         menPopEliminar = new javax.swing.JMenuItem();
@@ -281,10 +279,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(80, 80, 80))
                     .addGroup(painelEdicaoLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(painelEdicaoLayout.createSequentialGroup()
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
                                 .addComponent(labelComplemento)
@@ -293,18 +287,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
                             .addComponent(comboLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelTituloContato1))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(painelEdicaoLayout.createSequentialGroup()
-                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTituloContato)
-                            .addGroup(painelEdicaoLayout.createSequentialGroup()
-                                .addComponent(lbDddCol)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpDddCol, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbCelularCol)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpCelCol, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +297,22 @@ public class ListagemColaborador extends javax.swing.JPanel {
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(painelEdicaoLayout.createSequentialGroup()
+                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelEdicaoLayout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTituloContato)
+                            .addGroup(painelEdicaoLayout.createSequentialGroup()
+                                .addComponent(lbDddCol)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cpDddCol, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbCelularCol)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cpCelCol, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelEdicaoLayout.setVerticalGroup(
             painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,54 +389,29 @@ public class ListagemColaborador extends javax.swing.JPanel {
 
         add(painelEdicao, "card4");
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, colaboradorList, tblColaborador);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idCol}"));
-        columnBinding.setColumnName("Id");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomCol}"));
-        columnBinding.setColumnName("Nome");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cpfCol}"));
-        columnBinding.setColumnName("CPF");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${equCol}"));
-        columnBinding.setColumnName("Equipe");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${usuCol}"));
-        columnBinding.setColumnName("Nome de Usuário");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tipoCol}"));
-        columnBinding.setColumnName("Tipo");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ultAcCol}"));
-        columnBinding.setColumnName("Último Acesso");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cepCol}"));
-        columnBinding.setColumnName("CEP");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${endCol}"));
-        columnBinding.setColumnName("Endereço");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${baiCol}"));
-        columnBinding.setColumnName("Bairro");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${numCol}"));
-        columnBinding.setColumnName("Número");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${comCol}"));
-        columnBinding.setColumnName("Complemento");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dddCol}"));
-        columnBinding.setColumnName("DDD");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${celCol}"));
-        columnBinding.setColumnName("Celular");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${senCol}"));
-        columnBinding.setColumnName("Senha");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
+        tblColaborador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "CPF", "Equipe", "Endereço", "Bairro", "Número", "CEP", "Complemento", "Celular", "DDD"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false, true, true, true, true, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblColaborador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblColaboradorMouseClicked(evt);
@@ -451,7 +423,7 @@ public class ListagemColaborador extends javax.swing.JPanel {
         painelListagem.setLayout(painelListagemLayout);
         painelListagemLayout.setHorizontalGroup(
             painelListagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
         );
         painelListagemLayout.setVerticalGroup(
             painelListagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,8 +431,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
         );
 
         add(painelListagem, "card3");
-
-        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -549,16 +519,16 @@ public class ListagemColaborador extends javax.swing.JPanel {
 
         if (opcaoSelecionada == 0) {
 
-            //ColaboradorDao colDao = new ColaboradorDao();
-            //try {
-            //colDao.eliminar(this.idCol);
-            this.limparTabela();
+            ColaboradorDao colDao = new ColaboradorDao();
+            try {
+            colDao.eliminar(this.idCol);
+            limparTabela();
             JOptionPane.showMessageDialog(null, "Cadastro apagado com sucesso!");
 
-            //} catch (SQLException ex) {
-            ///  Logger.getLogger(ListagemColaborador.class.getName()).log(Level.SEVERE, null, ex);
-            /// JOptionPane.showMessageDialog(null, "Erro ao apagar cadastro!", "ATENÇÃO!", JOptionPane.ERROR_MESSAGE);
-            //}
+            } catch (SQLException ex) {
+              Logger.getLogger(ListagemColaborador.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(null, "Erro ao apagar cadastro!", "ATENÇÃO!", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
     }//GEN-LAST:event_menPopEliminarActionPerformed
@@ -615,8 +585,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
-    private java.util.List<br.senai.sc.sisges.views.Colaborador> colaboradorList;
-    private javax.persistence.Query colaboradorQuery;
     private javax.swing.JComboBox<String> comboLogin;
     private javax.swing.JTextField cpBaiCol;
     private javax.swing.JFormattedTextField cpCelCol;
@@ -628,7 +596,6 @@ public class ListagemColaborador extends javax.swing.JPanel {
     private javax.swing.JTextField cpEquCol;
     private javax.swing.JTextField cpNomCol;
     private javax.swing.JFormattedTextField cpNumCol;
-    private javax.persistence.EntityManager entityManager;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -656,6 +623,5 @@ public class ListagemColaborador extends javax.swing.JPanel {
     private javax.swing.JPanel painelEdicao;
     private javax.swing.JPanel painelListagem;
     private javax.swing.JTable tblColaborador;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

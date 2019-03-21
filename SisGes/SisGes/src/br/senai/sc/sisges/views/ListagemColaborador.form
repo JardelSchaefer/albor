@@ -2,29 +2,6 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
-    <Component class="javax.persistence.EntityManager" name="entityManager">
-      <Properties>
-        <Property name="persistenceUnit" type="java.lang.String" value="sis_ges?zeroDateTimeBehavior=convertToNullPU"/>
-      </Properties>
-    </Component>
-    <Component class="javax.persistence.Query" name="colaboradorQuery">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT c FROM Colaborador c"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="entityManager"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="colaboradorList">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="colaboradorQuery"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;br.senai.sc.sisges.views.Colaborador&gt;"/>
-      </AuxValues>
-    </Component>
     <Container class="javax.swing.JPopupMenu" name="menPopUpTbl">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -147,11 +124,6 @@
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace min="60" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="labelComplemento" min="-2" max="-2" attributes="0"/>
@@ -162,21 +134,6 @@
                               <Component id="labelTituloContato1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelTituloContato" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbDddCol" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cpDddCol" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lbCelularCol" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cpCelCol" min="-2" pref="103" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -192,6 +149,25 @@
                               <Component id="jSeparator2" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="btnSalvar" min="-2" pref="90" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="labelTituloContato" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbDddCol" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cpDddCol" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lbCelularCol" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cpCelCol" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -475,7 +451,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="1" pref="483" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="417" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -494,28 +470,23 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tblColaborador">
               <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="11" rowCount="0">
+                    <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
+                    <Column editable="true" title="Nome" type="java.lang.String"/>
+                    <Column editable="false" title="CPF" type="java.lang.String"/>
+                    <Column editable="true" title="Equipe" type="java.lang.String"/>
+                    <Column editable="true" title="Endere&#xe7;o" type="java.lang.String"/>
+                    <Column editable="true" title="Bairro" type="java.lang.String"/>
+                    <Column editable="true" title="N&#xfa;mero" type="java.lang.Integer"/>
+                    <Column editable="true" title="CEP" type="java.lang.String"/>
+                    <Column editable="true" title="Complemento" type="java.lang.String"/>
+                    <Column editable="true" title="Celular" type="java.lang.String"/>
+                    <Column editable="true" title="DDD" type="java.lang.Integer"/>
+                  </Table>
+                </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -577,70 +548,6 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
-              <BindingProperties>
-                <BindingProperty name="elements" source="colaboradorList" target="tblColaborador" targetPath="elements" updateStrategy="0" immediately="true">
-                  <Subbinding sourcePath="${idCol}">
-                    <BindingParameter name="NAME" value="Id"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${nomCol}">
-                    <BindingParameter name="NAME" value="Nome"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${cpfCol}">
-                    <BindingParameter name="NAME" value="CPF"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${equCol}">
-                    <BindingParameter name="NAME" value="Equipe"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${usuCol}">
-                    <BindingParameter name="NAME" value="Nome de Usu&#xe1;rio"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${tipoCol}">
-                    <BindingParameter name="NAME" value="Tipo"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${ultAcCol}">
-                    <BindingParameter name="NAME" value="&#xda;ltimo Acesso"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${cepCol}">
-                    <BindingParameter name="NAME" value="CEP"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${endCol}">
-                    <BindingParameter name="NAME" value="Endere&#xe7;o"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${baiCol}">
-                    <BindingParameter name="NAME" value="Bairro"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${numCol}">
-                    <BindingParameter name="NAME" value="N&#xfa;mero"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${comCol}">
-                    <BindingParameter name="NAME" value="Complemento"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${dddCol}">
-                    <BindingParameter name="NAME" value="DDD"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${celCol}">
-                    <BindingParameter name="NAME" value="Celular"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${senCol}">
-                    <BindingParameter name="NAME" value="Senha"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                </BindingProperty>
-              </BindingProperties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblColaboradorMouseClicked"/>
               </Events>

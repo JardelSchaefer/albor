@@ -52,6 +52,7 @@ public class ColaboradorDao extends ConnectionFactory {
         String sql = "delete from colaborador where idCol = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            
             st.setInt(1, idCol);
             st.execute();
             st.close();
