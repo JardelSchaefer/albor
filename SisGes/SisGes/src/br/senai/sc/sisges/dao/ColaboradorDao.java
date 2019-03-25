@@ -69,6 +69,8 @@ public class ColaboradorDao extends ConnectionFactory {
                 + "equCol=?, dddCol=? where idCol = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            
+            
             st.setString(1, col.getNomCol());
             st.setString(2, col.getEndCol());
             st.setLong(3, col.getNumCol());
