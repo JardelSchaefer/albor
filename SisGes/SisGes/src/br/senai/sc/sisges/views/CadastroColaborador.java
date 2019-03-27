@@ -44,10 +44,14 @@ public class CadastroColaborador extends javax.swing.JPanel {
         labelTituloContato1 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         lbEquCol = new javax.swing.JLabel();
-        cpEquCol = new javax.swing.JTextField();
         comboLogin = new javax.swing.JComboBox<>();
         cpDddCol = new javax.swing.JFormattedTextField();
         cpNumCol = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cpUsuCol = new javax.swing.JTextField();
+        cpSenCol = new javax.swing.JTextField();
+        cpEquCol = new javax.swing.JFormattedTextField();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -112,7 +116,7 @@ public class CadastroColaborador extends javax.swing.JPanel {
         labelTituloContato1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelTituloContato1.setText("Login");
 
-        lbEquCol.setText("Equipe:");
+        lbEquCol.setText("Código da Equipe:");
 
         comboLogin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Colaborador" }));
         comboLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -133,19 +137,25 @@ public class CadastroColaborador extends javax.swing.JPanel {
             ex.printStackTrace();
         }
 
+        jLabel1.setText("Nome de Usuário:");
+
+        jLabel2.setText("Senha:");
+
+        try {
+            cpEquCol.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cpEquCol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpEquColActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(comboLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +169,7 @@ public class CadastroColaborador extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cpNomCol))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(labelCadastroCliente)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbCpfCol)
@@ -168,7 +178,7 @@ public class CadastroColaborador extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbEquCol)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpEquCol, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cpEquCol)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
@@ -205,20 +215,40 @@ public class CadastroColaborador extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(labelCep)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cpCepCol, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(labelTituloContato1))
-                                .addGap(0, 8, Short.MAX_VALUE)))
+                                                .addComponent(cpCepCol, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 51, Short.MAX_VALUE)))
                         .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelTituloContato)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2))
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator5)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cpSenCol, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTituloContato1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpUsuCol, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,13 +304,21 @@ public class CadastroColaborador extends javax.swing.JPanel {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTituloContato1)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cpUsuCol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cpSenCol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(comboLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -294,7 +332,8 @@ public class CadastroColaborador extends javax.swing.JPanel {
         col.setEndCol(cpEndCol.getText());
         col.setBaiCol(cpBaiCol.getText());
         col.setComCol(cpComCol.getText());
-        col.setEquCol(cpEquCol.getText());
+        col.setUsuCol(cpUsuCol.getText());
+        col.setSenCol(cpSenCol.getText());
         col.setTipoCol((String) comboLogin.getSelectedItem());
         
         String cep = cpCepCol.getText();
@@ -312,12 +351,15 @@ public class CadastroColaborador extends javax.swing.JPanel {
         String ddd = cpDddCol.getText();
         ddd = ddd.replaceAll("[^0-9]", "");
         
+        String equipe = cpEquCol.getText();
+        equipe = equipe.replaceAll("[^0-9]", "");
+        
         col.setCepCol(Long.parseLong(cep));
         col.setCelCol(Long.parseLong(celular));
         col.setNumCol(Long.parseLong(numero));
         col.setCpfCol(Long.parseLong(cpf));
         col.setDddCol(Long.parseLong(ddd));
-
+        col.setEquCol(Long.parseLong(equipe));
         //Inseri o funcionario no banco de dados
         ColaboradorDao colDao = new ColaboradorDao();
         try {
@@ -334,6 +376,10 @@ public class CadastroColaborador extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboLoginActionPerformed
 
+    private void cpEquColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpEquColActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpEquColActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
@@ -345,9 +391,13 @@ public class CadastroColaborador extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField cpCpfCol;
     private javax.swing.JFormattedTextField cpDddCol;
     private javax.swing.JTextField cpEndCol;
-    private javax.swing.JTextField cpEquCol;
+    private javax.swing.JFormattedTextField cpEquCol;
     private javax.swing.JTextField cpNomCol;
     private javax.swing.JFormattedTextField cpNumCol;
+    private javax.swing.JTextField cpSenCol;
+    private javax.swing.JTextField cpUsuCol;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

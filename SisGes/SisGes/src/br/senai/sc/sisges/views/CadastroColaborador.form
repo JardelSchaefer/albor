@@ -23,19 +23,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                      <Component id="btnSalvar" min="-2" pref="90" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="comboLogin" min="-2" pref="117" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -51,7 +38,7 @@
                               <Component id="cpNomCol" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="labelCadastroCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lbCpfCol" min="-2" max="-2" attributes="0"/>
@@ -61,7 +48,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lbEquCol" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cpEquCol" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="cpEquCol" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -111,9 +98,8 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="labelTituloContato1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -124,7 +110,6 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator2" max="32767" attributes="0"/>
@@ -132,6 +117,35 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="comboLogin" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cpSenCol" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="labelTituloContato1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cpUsuCol" min="-2" pref="209" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+              <Component id="btnSalvar" min="-2" pref="90" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -197,13 +211,23 @@
               <Component id="jSeparator4" min="-2" pref="7" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="labelTituloContato1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cpUsuCol" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cpSenCol" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="comboLogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jSeparator5" min="-2" pref="9" max="-2" attributes="0"/>
-              <EmptySpace pref="9" max="32767" attributes="0"/>
-              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -338,10 +362,8 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbEquCol">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Equipe:"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo da Equipe:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cpEquCol">
     </Component>
     <Component class="javax.swing.JComboBox" name="comboLogin">
       <Properties>
@@ -369,6 +391,30 @@
           <Format format="####" subtype="-1" type="5"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome de Usu&#xe1;rio:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cpUsuCol">
+    </Component>
+    <Component class="javax.swing.JTextField" name="cpSenCol">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="cpEquCol">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpEquColActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

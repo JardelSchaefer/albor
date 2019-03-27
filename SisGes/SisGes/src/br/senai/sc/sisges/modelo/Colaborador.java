@@ -17,7 +17,7 @@ public class Colaborador {
     private String usuCol;
     private String senCol;
     private String ultAcCol;
-    private String equCol;
+    private long equCol;
     private long dddCol;
 
     public long getIdCol() {
@@ -124,11 +124,11 @@ public class Colaborador {
         this.ultAcCol = ultAcCol;
     }
 
-    public String getEquCol() {
+    public long getEquCol() {
         return equCol;
     }
 
-    public void setEquCol(String equCol) {
+    public void setEquCol(long equCol) {
         this.equCol = equCol;
     }
 
