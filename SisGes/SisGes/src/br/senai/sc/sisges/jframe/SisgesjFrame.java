@@ -9,6 +9,7 @@ import br.senai.sc.sisges.views.CadastroAgenda;
 import br.senai.sc.sisges.views.CadastroColaborador;
 import br.senai.sc.sisges.views.CadastroDeEquipe;
 import br.senai.sc.sisges.views.ListagemColaborador;
+import br.senai.sc.sisges.views.ListagemEquipe;
 //import br.senai.sc.sisges.views.ListagemEquipe;
 import br.senai.sc.sisges.views.TelaLogin;
 import java.awt.CardLayout;
@@ -167,7 +168,9 @@ public class SisgesjFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menCadastrarEquipeActionPerformed
 
     private void menListarEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menListarEquipesActionPerformed
-         
+        ListagemEquipe le = new ListagemEquipe();
+        painelPrincipal.add(le, "listarEquipe");
+        
         CardLayout cl = (CardLayout) painelPrincipal.getLayout(); 
         cl.show(painelPrincipal, "listarEquipe");
         

@@ -19,14 +19,14 @@ public class EquipeDao extends ConnectionFactory {
     public void inserir(Equipe equ) throws SQLException {
 
         String sql = "insert into equipe "
-                + "(nomEqu, desEqu, "
-                + "idEqu)"
-                + "values (?, ?, ?);";
+                + "(nomEqu, desEqu)"
+                + "values (?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setString(1, equ.getDesEqu());
-            st.setString(2, equ.getNomEqu());
-            st.setLong(3, equ.getIdEqu());          
+            st.setString(1, equ.getNomEqu());
+            st.setString(2, equ.getDesEqu());
+            
+             
 
             st.execute();
             st.close();
@@ -36,12 +36,12 @@ public class EquipeDao extends ConnectionFactory {
 
     }
     
-    public void eliminar(int codEqu) throws SQLException {
+    public void eliminar(int idEqu) throws SQLException {
 
-        String sql = "delete from equipe where codEqu = ?";
+        String sql = "delete from equipe where idEqu = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, codEqu);
+            st.setInt(1, idEqu);
             st.execute();
             st.close();
         }
@@ -52,12 +52,12 @@ public class EquipeDao extends ConnectionFactory {
 
     public void alterar(Equipe equ) throws SQLException {
 
-        String sql = "update cliente set nomEqu = ?, desEqu = ?, IdEqu = ?";
+        String sql = "update cliente set nomEqu = ?, desEqu = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             st.setString(1, equ.getDesEqu());
             st.setString(2, equ.getNomEqu());
-            st.setLong(3, equ.getIdEqu());   
+           
             
 
             st.execute();
@@ -96,12 +96,12 @@ public class EquipeDao extends ConnectionFactory {
         return equipe;
     }
 
-    public Equipe getEquipe(int codEqu) throws SQLException {
-        String sql = "select * from equipe where codEqu = ?";
+    public Equipe getEquipe(int idEqu) throws SQLException {
+        String sql = "select * from equipe where idEqu = ?";
         Equipe equipe = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, codEqu);
+            st.setInt(1, idEqu);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
                     Equipe eq = new Equipe();
